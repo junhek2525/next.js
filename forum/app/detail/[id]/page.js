@@ -1,19 +1,19 @@
 // detail/[id]/page.js
 // dynamic route
-import { Collection, ObjectId } from "mongodb"
+import { ObjectId } from "mongodb";
 import {connectDB} from "@/untils/database.js";
 
-export default async function Detail(props){
-    let db = (await connectDB).db('foruum');
-    let result = await db.collection('re').findOne({_id : new ObjectId(props.params.id)})
-    console.log(result);
-    console.log(props)
-    return(
+export default async function Detail(props) {
+  let db = (await connectDB).db('foruum');
+  let result = await db.collection('re').findOne({_id : new ObjectId(props.params.id)});
+  console.log(result);
+  console.log(props)
 
-        <div>
-            <h4>상세이야기</h4>
-            <h4>{result.title}</h4>
-            <p>{result.content}</p>
-        </div>
-    )
+  return (
+    <div>
+      <h4>상세페이지입니다</h4>
+      <h4>{result.title}</h4>
+      <p>{result.content}</p>
+    </div>
+  )
 }
